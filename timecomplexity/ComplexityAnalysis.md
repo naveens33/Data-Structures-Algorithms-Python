@@ -2,10 +2,10 @@
 
 Space complexity and time complexity are two important concepts in computer science and algorithm analysis. Here's a brief explanation of what they mean:
 
-##Time complexity
+## Time complexity
 Time complexity is the amount of time an algorithm takes to run as a function of the input size. It measures how much time an algorithm will take to execute on a given input, as the size of the input grows. Time complexity is typically measured in terms of the number of basic operations performed by the algorithm, such as comparisons, additions, or swaps.
 
-##Space complexity: 
+## Space complexity: 
 Space complexity is the amount of memory an algorithm requires as a function of the input size. It measures how much memory an algorithm will take to execute on a given input, as the size of the input grows. Space complexity is typically measured in terms of the number of bytes or bits required by the algorithm.
 
 In general, algorithms with lower time complexity are more desirable than those with higher time complexity, because they are faster and more efficient. Similarly, algorithms with lower space complexity are more desirable than those with higher space complexity, because they use less memory and are more efficient in terms of storage.

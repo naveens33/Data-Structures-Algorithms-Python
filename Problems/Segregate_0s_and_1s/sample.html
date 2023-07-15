@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+     pre {
+      background-color: black;
+      padding: 10px;
+      font-family: 'Courier New', monospace;
+    }
+    .ball-icon-red {
+      color: red;
+      font-size: 1.5rem;
+    }
+    .ball-icon-blue {
+      color: blue;
+      font-size: 1.5rem;
+    }
+    .col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $('.fa-solid').on('dragstart', function(event) {
+        event.originalEvent.dataTransfer.setData('text/plain', event.target.getAttribute('id'));
+      });
+      $('.col').on('drop', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var src = event.originalEvent.dataTransfer.getData('text/plain');
+        var target = event.currentTarget.querySelector('.fa-solid');
+        swapNodes(document.getElementById(src), target);
+        $(this).removeClass('highlight');
+      });
+      $('.col').on('dragover', function(event) {
+        event.preventDefault();
+      });
+      $('.col').on('dragenter', function(event) {
+        event.preventDefault();
+        $(this).addClass('highlight');
+      });
+      $('.col').on('dragleave', function(event) {
+        $(this).removeClass('highlight');
+      });
+
+      function swapNodes(a, b) {
+        if (!b) {
+          return;
+        }
+        var aparent = a.parentNode;
+        var asibling = a.nextSibling === b ? a : a.nextSibling;
+        b.parentNode.insertBefore(a, b);
+        aparent.insertBefore(b, asibling);
+      }
+    });
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m10">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Segregate 0s and 1s in an array</span>
+           <pre>
+               <code class="python">
+    li = [0, 1, 1, 1, 0, 1, 1]
+    left = 0
+    right = len(li) - 1
+
+    while left < right:
+        print(left, right)
+        while li[left] == 0 and left < right:
+            left += 1
+
+        while li[right] == 1 and left < right:
+            right -= 1
+
+        if li[left] > li[right]:
+            li[left] = 0
+            li[right] = 1
+            left += 1
+            right -= 1
+
+    print(li)
+    #output [0, 0, 1, 1, 1, 1, 1]
+
+            </code>
+           </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+      <div class="row">
+      <div class="col s1">
+        <input  type="text" class="center validate" value="0">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate" value="1">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate" value="2">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate" value="3">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate" value="4">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate" value="5">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s1">
+        <input  type="text" class="center validate">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate">
+      </div>
+      <div class="col s1">
+<input  type="text" class="center validate">
+      </div>
+    </div>
+      <div class="row">
+      <div class="col s1">
+        <i class="fa-solid fa-0 ball-icon-red" id="1" draggable="true"></i>
+      </div>
+      <div class="col s1">
+        <i class="fa-solid fa-1 ball-icon-blue" id="2" draggable="true"></i>
+      </div>
+      <div class="col s1">
+        <i class="fa-solid fa-1 ball-icon-blue" id="4" draggable="true"></i>
+      </div>
+      <div class="col s1">
+        <i class="fa-solid fa-1 ball-icon-blue" id="5" draggable="true"></i>
+      </div>
+      <div class="col s1">
+        <i class="fa-solid fa-0 ball-icon-red" id="6" draggable="true"></i>
+      </div>
+      <div class="col s1">
+        <i class="fa-solid fa-1 ball-icon-blue" id="7" draggable="true"></i>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

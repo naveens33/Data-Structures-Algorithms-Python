@@ -1,3 +1,4 @@
+'''
 def search(seq, target, left, right):
 
     while left <= right:
@@ -37,3 +38,20 @@ if ans is not None:
     print(target, "found in index", ans)
 else:
     print(target, "not found")
+'''
+
+
+def search_(li, target,l ,r):
+    middle  = l + (r-l)//2
+    if(l>r):
+        return None
+    else:
+        if li[middle]==target:
+            print(middle)
+        elif target < li[middle]:
+            search_(li, target, l, middle-1)
+        else:
+            search_(li, target, middle+1,r)
+
+li = [1, 3, 5, 7, 9, 11, 13, 15]
+search_(li, 11, 0, len(li))

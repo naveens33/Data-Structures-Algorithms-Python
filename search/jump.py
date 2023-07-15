@@ -23,3 +23,27 @@ n = len(arr)
 
 index = search(arr, x, n)
 print(index)
+
+
+import math
+
+li = [24, 56, 69, 70, 83, 99, 109, 145, 154, 167]
+
+l = 0
+r = len(li)
+s = math.ceil(math.sqrt(r))
+t = 69
+while s <= len(li):
+    if t > li[s]:
+        l = s
+        s += s
+    elif t <= li[s]:
+        r = s
+        break
+
+for i in range(l, r + 1):
+    if (li[i] == t):
+        print(i)
+        break
+else:
+    print("-1")
